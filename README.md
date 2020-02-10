@@ -8,10 +8,10 @@ Click 'Clone or Download' button on the main page.
 
 Using the command line:
 
-'git clone https://github.com/popellab/qspio-dev.git'
+'git clone https://github.com/popellab/qspio.git'
 
 ---
 
 ## Intstalling the Repository
 
-Add qspio-dev directory with subdirectories to your MATLAB path.
+Add qspio directory with subdirectories to your MATLAB path.
