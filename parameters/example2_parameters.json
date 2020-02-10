@@ -1,0 +1,741 @@
+[
+  {
+    "name":"V_C",
+    "value":5,
+    "units":"liter",
+    "description":"Central compartment volume",
+    "source":"doi: 10.1002/psp4.12040"
+  },
+  {
+    "name":"V_P",
+    "value":60,
+    "units":"liter",
+    "description":"Peripheral compartment volume",
+    "source":"estimated"
+  },
+  {
+    "name":"V_Tmin",
+    "value":1e-3,
+    "units":"microliter",
+    "description":"Cancer-free Tumour compartment volume",
+    "source":"estimated"
+  },
+  {
+    "name":"V_LN",
+    "value":null,
+    "units":"liter",
+    "description":"Lymph Node compartment volume",
+    "source":"derived",
+    "derived_from":["nLNs","D_LN"],
+    "expression":"p(1)*4/3*pi*(p(2)/2)^3"
+  },
+  {
+    "name":"gamma_P",
+    "value":0.0067,
+    "units":"dimensionless",
+    "description":"Peripheral Blood Volume Fraction",
+    "source":"estimated"
+  },
+  {
+    "name":"gamma_T",
+    "value":0.0067,
+    "units":"dimensionless",
+    "description":"Tumour Blood Volume Fraction",
+    "source":"estimated"
+  },
+  {
+    "name":"vol_cell",
+    "value":null,
+    "units":"micrometer^3/cell",
+    "description":"Volume of a single cancer cell",
+    "source":"derived",
+    "derived_from":["D_cell","cell"],
+    "expression":"4/3*pi*(p(1)/2)^3/p(2)"
+  },
+  {
+    "name":"vol_Tcell",
+    "value":176,
+    "units":"micrometer^3/cell",
+    "description":"Volume of a single T cell",
+    "source":"doi: 10.1136/jcp.34.10.1083"
+  },
+  {
+    "name":"k_cell_clear",
+    "value":0.1,
+    "units":"1/day",
+    "description":"Rate of clearence of dead cancer cells",
+    "source":"estimated"
+  },
+  {
+    "name":"k_C_growth",
+    "value":0.012,
+    "units":"1/day",
+    "description":"Cancer cell growth rate",
+    "source":"doi: 10.1208/s12248-019-0302-5"
+  },
+  {
+    "name":"C_max",
+    "value":null,
+    "units":"cell",
+    "description":"Cancer cell capacity",
+    "source":"derived",
+    "derived_from":["D_T_max","rho_cell"],
+    "expression":"4*pi/3*(p(1)/2)^3*p(2)"
+  },
+  {
+    "name":"k_C_death",
+    "value":1e-5,
+    "units":"1/day",
+    "description":"Cancer cell death rate",
+    "source":"PMID: 3156189"
+  },
+  {
+    "name":"initial_tumour_diameter",
+    "value":3,
+    "units":"centimeter",
+    "description":"Inital Tumour Diameter",
+    "source":"estimated based on trials"
+  },
+  {
+    "name":"div",
+    "value":1.11e6,
+    "units":"dimensionless",
+    "description":"T cell Diversity",
+    "source":"doi: 10.1182/blood-2009-04-217604"
+  },
+  {
+    "name":"n_clones",
+    "value":100,
+    "units":"dimensionless",
+    "description":"T cell Clonality",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"Q_nT_thym",
+    "value":3.2e9,
+    "units":"cell/day",
+    "description":"Rate of Naive T Cell Output from the Thymus",
+    "source":"doi: 10.4049/jimmunol.0900743"
+  },
+  {
+    "name":"q_LN_in",
+    "value":0.07,
+    "units":"1/day/milliliter",
+    "description":"Rate of T Cell Lymph Node Entry",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"q_LN_out",
+    "value":1.13,
+    "units":"1/day",
+    "description":"Rate of T Cell Lymph Node Exit",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"nT_C",
+    "value":null,
+    "units":"cell",
+    "description":"Number of Naive T Cells in the Blood",
+    "source":"derived",
+    "derived_from":["rho_nT","V_C"],
+    "expression":"p(1)*p(2)"
+  },
+  {
+    "name":"nT_P",
+    "value":null,
+    "units":"cell",
+    "description":"Number of Naive T Cells in the Peripheral Compartment",
+    "source":"derived",
+    "derived_from":["rho_nT","V_C"],
+    "expression":"p(1)*p(2)*50"
+  },
+  {
+    "name":"nT_LN",
+    "value":null,
+    "units":"cell",
+    "description":"Number of Naive T Cells in the Lymph Node Compartment",
+    "source":"derived",
+    "derived_from":["rho_nT","V_C","V_P","V_LN"],
+    "expression":"p(1)*p(2)/p(3)*p(4)"
+  },
+  {
+    "name":"k_act",
+    "value":10,
+    "units":"1/day",
+    "description":"Rate of T Cell Activation",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"k_nT_pro",
+    "value":3.2e8,
+    "units":"cell/day",
+    "description":"Rate of Naive T Cell Proliferation",
+    "source":"doi: 10.1016/j.immuni.2012.02.006"
+  },
+  {
+    "name":"K_nT_pro",
+    "value":1e9,
+    "units":"cell",
+    "description":"Naive T cell Density for Half-Maximal Peripheral Proliferation",
+    "source":"doi: 10.1016/j.immuni.2012.02.006"
+  },
+  {
+    "name":"k_pro",
+    "value":1,
+    "units":"1/day",
+    "description":"Rate of T Cell Proliferation",
+    "source":"doi: 10.1126/science.1260044"
+  },
+  {
+    "name":"k_nT_death",
+    "value":0.002,
+    "units":"1/day",
+    "description":"Rate of Naive T Cell Death",
+    "source":"doi: 10.1016/j.immuni.2012.02.006"
+  },
+  {
+    "name":"k_death",
+    "value":0.01,
+    "units":"1/day",
+    "description":"Rate of T Cell Death",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"q_P_in",
+    "value":null,
+    "units":"1/day",
+    "description":"Rate of T Cell Peripheral Entry",
+    "source":"derived",
+    "derived_from":["k_mig","rho_adh","gamma_P","V_P"],
+    "expression":"p(1)*p(2)*p(3)*p(4)"
+  },
+  {
+    "name":"q_P_out",
+    "value":1,
+    "units":"1/day",
+    "description":"Rate of T Cell Peripheral Exit",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"q_T_in",
+    "value":null,
+    "units":"1/day/centimeter^3",
+    "description":"Rate of T Cell Tumour Entry",
+    "source":"derived",
+    "derived_from":["k_mig","rho_adh","gamma_T"],
+    "expression":"p(1)*p(2)*p(3)"
+  },
+  {
+    "name":"k_C_Tcell",
+    "value":0.09,
+    "units":"1/day",
+    "description":"Cancer Cell Death Rate due to T Cells",
+    "source":"estimated"
+  },
+  {
+    "name":"k_Tcell",
+    "value":0.1,
+    "units":"1/day",
+    "description":"Rate of T Cell Exhaustion from Cancer Cells",
+    "source":"estimated"
+  },
+  {
+    "name":"k_Treg",
+    "value":2,
+    "units":"1/day",
+    "description":"Rate of T Cell Exhaustion from Tregs",
+    "source":"estimated"
+  },
+  {
+    "name":"k_IL2_deg",
+    "value":0.2,
+    "units":"1/minute",
+    "description":"IL2 Degradation Rate",
+    "source":"PMID: 3871099"
+  },
+  {
+    "name":"k_IL2_cons",
+    "value":6e-6,
+    "units":"nanomole/cell/hour",
+    "description":"IL2 Maximum Consumption Rate by T Cells",
+    "source":"PMID: 3871099"
+  },
+  {
+    "name":"k_IL2_sec",
+    "value":3e-5,
+    "units":"nanomole/cell/hour",
+    "description":"IL2 Secretion Rate from Activated T Cells",
+    "source":"doi: 10.1371/journal.pcbi.1004206    doi: 10.1073/pnas.1117194109"
+  },
+  {
+    "name":"IL2_50",
+    "value":0.32,
+    "units":"nanomolarity",
+    "description":"IL2 Concentration for Half-Maximal Consumption by Cytotoxic T Cells",
+    "source":"doi: 10.1126/science.1260044"
+  },
+  {
+    "name":"IL2_50_Treg",
+    "value":0.0032,
+    "units":"nanomolarity",
+    "description":"IL2 Concentration for Half-Maximal Consumption by Tregs",
+    "source":"doi: 10.1084/jem.166.4.1055"
+  },
+  {
+    "name":"N0",
+    "value":15,
+    "units":"dimensionless",
+    "description":"Baseline Number of Activated T Cell Generations",
+    "source":"doi: 10.1126/science.1260044"
+  },
+  {
+    "name":"N_IL2",
+    "value":2,
+    "units":"dimensionless",
+    "description":"Additional Number of Activated T Cell Generations Due to IL2",
+    "source":"doi: 10.1126/science.1260044"
+  },
+  {
+    "name":"V_e",
+    "value":null,
+    "units":"micrometer^3",
+    "description":"Endosomal Volume",
+    "source":"derived",
+    "derived_from":["V_endo","N_endo"],
+    "expression":"p(1)*p(2)"
+  },
+  {
+    "name":"A_e",
+    "value":null,
+    "units":"micrometer^2",
+    "description":"Endosomal Surface Area",
+    "source":"derived",
+    "derived_from":["A_endo","N_endo"],
+    "expression":"p(1)*p(2)"
+  },
+  {
+    "name":"A_s",
+    "value":900,
+    "units":"micrometer^2",
+    "description":"APC Surface Area",
+    "source":"doi: 10.1006/jtbi.1996.0190"
+  },
+  {
+    "name":"A_syn",
+    "value":37.8,
+    "units":"micrometer^2",
+    "description":"Synapse Surface Area",
+    "source":"doi: 10.4049/jimmunol.175.3.1575"
+  },
+  {
+    "name":"A_cell",
+    "value":null,
+    "units":"micrometer^2",
+    "description":"Cancer Cell Surface Area",
+    "source":"derived",
+    "derived_from":["D_cell"],
+    "expression":"4*pi*(p(1)/2)^2"
+  },
+  {
+    "name":"A_Tcell",
+    "value":null,
+    "units":"micrometer^2",
+    "description":"T Cell Surface Area",
+    "source":"derived",
+    "derived_from":["D_Tcell"],
+    "expression":"4*pi*(p(1)/2)^2"
+  },
+  {
+    "name":"k_TCR_p",
+    "value":1,
+    "units":"1/second",
+    "description":"Rate of TCR Modification",
+    "source":"doi: 10.1038/nri3728"
+  },
+  {
+    "name":"k_TCR_on",
+    "value":1,
+    "units":"1/(second*molecule/micrometer^2)",
+    "description":"Rate of TCR Binding",
+    "source":"doi: 10.1038/nri3728"
+  },
+  {
+    "name":"k_TCR_off",
+    "value":1,
+    "units":"1/second",
+    "description":"Rate of TCR Unbinding",
+    "source":"doi: 10.1038/nri3728"
+  },
+  {
+    "name":"phi_TCR",
+    "value":0.09,
+    "units":"1/second",
+    "description":"Rate of TCR Modification Leading to Non-Signaling",
+    "source":"doi: 10.1038/nri3728"
+  },
+  {
+    "name":"N_TCR",
+    "value":10,
+    "units":"dimensionless",
+    "description":"Number of Intermediate Steps",
+    "source":"doi: 10.1038/nri3728"
+  },
+  {
+    "name":"TCR_tot",
+    "value":null,
+    "units":"molecule/micrometer^2",
+    "description":"Number of TCR Molecules on Naive T Cells per Unit Area",
+    "source":"derived",
+    "derived_from":["TCR_total","A_Tcell"],
+    "expression":"p(1)/p(2)"
+  },
+  {
+    "name":"p_50",
+    "value":null,
+    "units":"molecule/micrometer^2",
+    "description":"MHC-Epitope-TCR Concentration for Half-Maximal T Cell Activation",
+    "source":"derived",
+    "derived_from":["N_p_50","A_syn"],
+    "expression":"p(1)/p(2)"
+  }, 
+  {
+    "name":"T_PD1_total",
+    "value":60000,
+    "units":"molecule",
+    "description":"Total number of PD1 Molecules on T Cells",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"T_PDL1_total",
+    "value":1.6e6,
+    "units":"molecule",
+    "description":"Total number of PDL1 Molecules on T Cells",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"C_PDL1_total",
+    "value":1.6e6,
+    "units":"molecule",
+    "description":"Total number of PDL1 Molecules on Cancer Cells",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"C_PDL2_total",
+    "value":4e4,
+    "units":"molecule",
+    "description":"Total number of PDL2 Molecules on Cancer Cells",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"APC_PDL1_total",
+    "value":1.6e6,
+    "units":"molecule",
+    "description":"Total number of PDL1 Molecules on APCs",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"APC_PDL2_total",
+    "value":4e4,
+    "units":"molecule",
+    "description":"Total number of PDL2 Molecules on APCs",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"kon_PD1_PDL1",
+    "value":null,
+    "units":"1/(micromolarity*nanometer*second)",
+    "description":"PD1-PDL1 Binding Rate",
+    "source":"derived",
+    "derived_from":["k_PD1_PDL1","d_syn"],
+    "expression":"p(1)/p(2)"
+  },
+  {
+    "name":"koff_PD1_PDL1",
+    "value":null,
+    "units":"1/second",
+    "description":"PD1-PDL1 Unbinding Rate",
+    "source":"derived",
+    "derived_from":["k_PD1_PDL1","kd_PD1_PDL1"],
+    "expression":"p(1)*p(2)"
+  },
+  {
+    "name":"kon_PD1_PDL2",
+    "value":null,
+    "units":"1/(micromolarity*nanometer*second)",
+    "description":"PD1-PDL2 Binding Rate",
+    "source":"derived",
+    "derived_from":["k_PD1_PDL2","d_syn"],
+    "expression":"p(1)/p(2)"
+  },
+  {
+    "name":"koff_PD1_PDL2",
+    "value":null,
+    "units":"1/second",
+    "description":"PD1-PDL2 Unbinding Rate",
+    "source":"derived",
+    "derived_from":["k_PD1_PDL2","kd_PD1_PDL2"],
+    "expression":"p(1)*p(2)"
+  },
+  {
+    "name":"kon_PD1_aPD1",
+    "value":1.3e6,
+    "units":"1/(molarity*second)",
+    "description":"PD1-nivolumab Binding Rate Constant",
+    "source":"doi: 10.1158/2326-6066.CIR-14-0040"
+  },
+  {
+    "name":"koff_PD1_aPD1",
+    "value":null,
+    "units":"1/second",
+    "description":"PD1-aPD1 Unbinding Rate",
+    "source":"derived",
+    "derived_from":["kon_PD1_aPD1","kd_PD1_aPD1"],
+    "expression":"p(1)*p(2)"
+  },
+  {
+    "name":"kon_PDL1_aPDL1",
+    "value":4.3e5,
+    "units":"1/(molarity*second)",
+    "description":"PDL1-durvalumab Binding Rate Constant",
+    "source":"doi: 10.1158/2326-6066.CIR-14-0040"
+  },
+  {
+    "name":"koff_PDL1_aPDL1",
+    "value":null,
+    "units":"1/second",
+    "description":"PDL1-aPDL1 Unbinding Rate",
+    "source":"derived",
+    "derived_from":["kon_PDL1_aPDL1","kd_PDL1_aPDL1"],
+    "expression":"p(1)*p(2)"
+  },
+  {
+    "name":"Chi_PD1",
+    "value":null,
+    "units":"1/nanometer",
+    "description":"PD1 Antibody Cross-Arm Binding Strength Corrected for 2D",
+    "source":"derived",
+    "derived_from":["chi_PD1","d_syn"],
+    "expression":"p(1)/p(2)"
+  },
+  {
+    "name":"Chi_PDL1",
+    "value":null,
+    "units":"1/nanometer",
+    "description":"PDL1 Antibody Cross-Arm Binding Strength Corrected for 2D",
+    "source":"derived",
+    "derived_from":["chi_PDL1","d_syn"],
+    "expression":"p(1)/p(2)"
+  },
+  {
+    "name":"PD1_50",
+    "value":100,
+    "units":"molecule/micrometer^2",
+    "description":"PD1-PDL1 Concentration for Half-Maximal PD1-Induced Reduction of T Cell Killing",
+    "source":"estimated"
+  }, 
+  {
+    "name":"n_PD1",
+    "value":2,
+    "units":"dimensionless",
+    "description":"Hill Coefficient for PD1-Induced Reduction of T Cell Killing",
+    "source":"estimated"
+  }, 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  {
+    "name":"cell",
+    "value":1,
+    "units":"cell",
+    "description":"Cell counter",
+    "source":""
+  },
+  {
+    "name":"nLNs",
+    "value":21,
+    "units":"dimensionless",
+    "description":"Number of tumour draining lymph nodes",
+    "source":"Tumor site specific - for lung, doi: 10.1590/s1806-37132007000200006"
+  },
+  {
+    "name":"D_LN",
+    "value":5,
+    "units":"millimeter",
+    "description":"Diameter of a single lymph node",
+    "source":"doi: 10.1590/s1806-37132007000200006"
+  },
+  {
+    "name":"D_cell",
+    "value":16.9,
+    "units":"micrometer",
+    "description":"Cancer cell diameter",
+    "source":"doi: 10.1371/journal.pone.0067466"
+  },
+  {
+    "name":"D_T_max",
+    "value":20,
+    "units":"centimeter",
+    "description":"Maximum Tumour Diameter",
+    "source":"doi: 10.1371/journal.pone.0093430"
+  },
+  {
+    "name":"rho_cell",
+    "value":1e9,
+    "units":"cell/milliliter",
+    "description":"Cancer cell density",
+    "source":"doi: 10.4161/cc.8.3.7608"
+  },
+  {
+    "name":"D_Tcell",
+    "value":6.94,
+    "units":"micrometer",
+    "description":"Average T Cell Diameter",
+    "source":"doi: 10.1136/jcp.34.10.1083"
+  },
+  {
+    "name":"k_mig",
+    "value":1e-12,
+    "units":"1/minute/cell",
+    "description":"Rate of T Cell Migration",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"k_mig_Treg",
+    "value":1e-12,
+    "units":"1/minute/cell",
+    "description":"Rate of Treg Migration",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"rho_adh",
+    "value":5e8,
+    "units":"cell/centimeter^3",
+    "description":"T Cell Adhesion Density",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"rho_nT",
+    "value":5.05e5,
+    "units":"cell/milliliter",
+    "description":"Naive T Cell Density",
+    "source":"doi: 10.1016/j.jim.2010.06.017"
+  },
+  {
+    "name":"rho_nTreg",
+    "value":8.60e5,
+    "units":"cell/milliliter",
+    "description":"Naive Treg Density",
+    "source":"doi: 10.1016/j.jim.2010.06.017"
+  },
+  {
+    "name":"n_MHC_T",
+    "value":2e6,
+    "units":"molecule",
+    "description":"Total Number of MHC Molecules",
+    "source":"doi: 10.1038/psp.2014.30"
+  },
+  {
+    "name":"N_endo",
+    "value":10,
+    "units":"dimensionless",
+    "description":"Number of Endosomal Vesicles",
+    "source":"doi: 10.1006/jtbi.1996.0190"
+  },
+  {
+    "name":"V_endo",
+    "value":4e-17,
+    "units":"liter",
+    "description":"Volume of Single Endosome",
+    "source":"doi: 10.1006/jtbi.1996.0190"
+  },
+  {
+    "name":"A_endo",
+    "value":1.5,
+    "units":"micrometer^2",
+    "description":"Surface Area of Single Endosome",
+    "source":"doi: 10.1006/jtbi.1996.0190"
+  },
+  {
+    "name":"TCR_total",
+    "value":15708,
+    "units":"molecule",
+    "description":"Number of TCR Molecules on Naive T Cells",
+    "source":"doi: 10.1038/nri3728"
+  },
+  {
+    "name":"N_p_50",
+    "value":0.001,
+    "units":"molecule",
+    "description":"Number of Epitope Molecules for Half-Maximal T Cell Activation",
+    "source":"doi: 10.1002/eji.1830271230"
+  },
+  {
+    "name":"d_syn",
+    "value":3,
+    "units":"nanometer",
+    "description":"Gap Distance of Immune Synapse",
+    "source":"doi: 10.4049/jimmunol.175.3.1575"
+  },
+  {
+    "name":"kd_PD1_PDL1",
+    "value":8.2,
+    "units":"micromolarity",
+    "description":"PD1-PDL1 Dissociation Constant",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"k_PD1_PDL1",
+    "value":0.175,
+    "units":"1/(micromolarity*second)",
+    "description":"PD1-PDL1 Binding Rate Constant",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"kd_PD1_PDL2",
+    "value":2.3,
+    "units":"micromolarity",
+    "description":"PD1-PDL2 Dissociation Constant",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"k_PD1_PDL2",
+    "value":0.23,
+    "units":"1/(micromolarity*second)",
+    "description":"PD1-PDL2 Binding Rate Constant",
+    "source":"doi: 10.1074/jbc.M112.448126"
+  },
+  {
+    "name":"kd_PD1_aPD1",
+    "value":2.6,
+    "units":"nanomolarity",
+    "description":"PD1-nivolumab Dissociation Constant",
+    "source":"doi: 10.1158/2326-6066.CIR-14-0040"
+  },
+  {
+    "name":"kd_PDL1_aPDL1",
+    "value":66.5,
+    "units":"nanomolarity",
+    "description":"PDL1-durvalumab Dissociation Constant",
+    "source":"doi: 10.1158/2326-6066.CIR-14-0040"
+  },
+  {
+    "name":"chi_PD1",
+    "value":10,
+    "units":"dimensionless",
+    "description":"PD1 Antibody Cross-Arm Binding Strength",
+    "source":"doi: 10.1158/2326-6066.CIR-14-0040"
+  },
+  {
+    "name":"chi_PDL1",
+    "value":100,
+    "units":"dimensionless",
+    "description":"PDL1 Antibody Cross-Arm Binding Strength",
+    "source":"estimated"
+  }
+]
