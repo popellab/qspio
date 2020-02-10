@@ -1,6 +1,6 @@
 QSPIO - A MATLAB SimBiology-Based Platform for QSP Modelling in Immune Oncology
 
-## Clonning the Repository
+## Cloning the Repository
 
 Click 'Clone or Download' button on the main page. 
 
