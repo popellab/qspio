@@ -71,8 +71,6 @@
     "value":0.012,
     "units":"1/day",
     "description":"Cancer cell growth rate",
-    "distribution":"normal",
-    "distribution_parameters":[0.012,0.001],
     "source":"doi: 10.1208/s12248-019-0302-5"
   },
   {
@@ -89,8 +87,6 @@
     "value":1e-5,
     "units":"1/day",
     "description":"Cancer cell death rate",
-    "distribution":"loguniform",
-    "distribution_parameters":[1e-6,1e-4],
     "source":"PMID: 3156189"
   },
   {
