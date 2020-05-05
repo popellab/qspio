@@ -25,6 +25,20 @@ end
 % Load text from .json file
 json = jsondecode(fileread(filename));
 
+% Convert Structure to Cell Array
+if (isstruct(json))
+    % Store Structure Array
+    json_struct = json;
+    
+    % Initialize Cell Array
+    json = cell(length(json),1);
+    
+    % Copy Fields
+    for i = 1:length(json)
+        json{i} = json_struct(i);
+    end
+end
+
 % Parse Text
 for i = 1:length(json)
     params_out.(json{i}.name).Value = json{i}.value;

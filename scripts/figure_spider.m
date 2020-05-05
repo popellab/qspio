@@ -1,11 +1,16 @@
 % Spider Plot Figure - script to generate tumour volumes of LHS sampled parameters
 % (Figure 4 in Sove et al 2020)
 %
+% Set N_lhs to change the number of "patients" simulated
+%
 % Note: Each run will produce a different figure since the LHS is randomly
 % generated. 
 
 % Setup Model
 example1;
+
+% Number of Simulations
+N_lhs = 5;
 
 % Get Model Parameters
 all_params = get_parameters(model);
@@ -23,7 +28,6 @@ input_params.k_cell_clear.min = 0.001; input_params.k_cell_clear.max = 0.04;
 input_params.PD1_50.min = 1; input_params.PD1_50.max = 50;
 
 % Run LHS of Parameter Subspace
-N_lhs = 5;
 [rho,in,out,fig] = run_lhs(model,dose_schedule,input_params,N_lhs);
 set(gca,'yscale','log'); ylabel('Tumour Volume ($\mu$L)');
 
